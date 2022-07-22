@@ -1,0 +1,157 @@
+//-------------------- #html
+html {
+	font-size: var(--rem-base);
+	box-sizing: border-box;
+	//fix iOS bugs reset paddings
+	padding: constant(safe-area-inset); //iOS 11
+	padding: env(safe-area-inset); //iOS 11.2+
+	
+	@include media("<=desktop-md") {
+		font-size: calc(var(--rem-base) - 1.5px);
+	}
+	
+	@include media("<=desktop") {
+		font-size: calc(var(--rem-base) - 2px);
+	}
+	
+	@include media("<=tablet") {
+		font-size: calc(var(--rem-base) - 2.5px);
+	}
+	
+	@include media("<=phone") {
+		overflow-x: hidden;
+		font-size: calc(var(--rem-base) - 3px);
+	}
+}
+
+body {
+	color: var(--base-text-color);
+	font: var(--base-font-size) / var(--base-line-height) $base-font;
+	min-width: 320px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+//---------------- #h style h1-h6
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6,
+.h {
+	font-family: $accent-font;
+	font-weight: bold;
+	color: var(--color-text);
+	line-height: 1.2;
+	
+	a {
+		color: inherit;
+		font-size: inherit;
+	}
+}
+
+h1,
+.h1 {
+	font-size: var(--h1);
+	margin: 0 0 1.5rem;
+}
+
+h2,
+.h2 {
+	font-size: var(--h2);
+	margin: 0 0 1.5rem;
+}
+h3,
+.h3 {
+	font-size: var(--h3);
+	margin: 0 0 1.5rem;
+}
+
+h4,
+.h4 {
+	font-size: var(--h4);
+	margin: 0 0 1.5rem;
+}
+
+h5,
+.h5 {
+	font-size: var(--h5);
+	margin: 0 0 1.5rem;
+}
+
+h6,
+.h6 {
+	font-size: var(--h6);
+	margin: 0 0 1.5rem;
+}
+
+//------------------- #a
+a {
+	color: var(--color-link);
+	text-decoration: none;
+	transition: color 0.3s ease-in-out;
+	
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+//------------------- #img
+img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: top;
+}
+
+//------------------- #p
+p {
+	margin-bottom: 1.2em;
+	margin-top: 0;
+	
+	&:last-child{
+		margin-bottom: 0;
+	}
+}
+
+//----------------------------- style #ol #ul #li
+ul,
+ol {
+	list-style: none;
+	margin-top: 0;
+	padding-left: 0;
+	margin-bottom: 1.2em;
+	
+	&:last-child{
+		margin-bottom: 0;
+	}
+	
+	li {
+		list-style: none;
+	}
+}
+
+//style only ol
+ol{
+	counter-reset: list;
+	
+	& > li {
+		padding-left: 2em;
+		position: relative;
+		
+		&:before {
+			content: counter(list) ".";
+			counter-increment: list;
+			position: absolute;
+			top: 0;
+			left: 0.5em;
+			font-weight: bold;
+		}
+	}
+}

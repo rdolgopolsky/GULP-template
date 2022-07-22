@@ -1,0 +1,117 @@
+$breakpoints: (
+	"full": 1920px,
+	"xl": 1680px,
+	"macbook": 1440px,
+	"ipad-pro": 1366px,
+	"desktop-md": 1200px,
+	"desktop": 1024px,
+	"tablet": 768px,
+	"phone": 667px,
+	"phone-md": 568px,
+	"phone-sm": 480px,
+	"phone-xs": 375px,
+);
+// ligatured operators ≥ ≤
+
+// keywords
+$media-expressions: (
+	"iphoneX":
+	"(min-width: 812px) and (max-height: 414px) and (orientation: landscape)",
+	"screen": "screen",
+	"print": "print",
+	"handheld": "handheld",
+	"landscape": "(orientation: landscape)",
+	"portrait": "(orientation: portrait)",
+	"retina2x": "(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)",
+	"retina3x": "(-webkit-min-device-pixel-ratio: 2.5), (min-resolution: 240dpi)",
+);
+
+// Buttons size
+//
+// x - top/bottom padding
+// y - left/right padding
+// b - border
+// r - radius
+// fz - font-size
+//
+$btnsSize: (
+	"default": (
+		"default": (
+			"y": 10px,
+			"x": 20px,
+			"b": 1px,
+			"r": 3px,
+			"fz": 13px,
+		),
+		// if need other size button
+		// 'lg': ('y': 18px, 'x': 35px, 'b': 3px, 'r': 0, 'fz': 22px),,
+	),
+	"phone": (
+		"default": (
+			"y": 1rem,
+			"x": 2rem,
+			"b": 1px,
+			"r": 3px,
+			"fz": 13px,
+		),
+	),
+);
+
+
+$gutter: 20px;
+$container: (
+	"default": 1180px,
+	 "lg": 1400px
+);
+
+$h1-h6-font-size: (
+	// --------- h1 ---- h2 ----h3 ---- h4 -- h5 -- h6 ---
+	"default": (3.5rem, 2.8rem, 2.2rem, 2rem, 17px, 16px),
+	"tablet": (30px, 25px, 20px, 18px, 17px, 16px)
+);
+
+// font-family
+$base-main-font: "Arial";
+$base-font-sans-serif: "Arial", "Helvetica Neue", "Helvetica", sans-serif;
+$base-font-serif: "Times New Roman", "Times", "Baskerville", "Georgia", serif;
+$base-font: $base-main-font, $base-font-sans-serif;
+$accent-font: $base-font;
+
+// colors
+$color-brand: #f1d64d;
+$color-accent: #e25262;
+
+$colors: (
+	"white": #ffffff,
+	"black": #333333,
+	
+	"brand": $color-brand,
+	"brand-dark": darken($color-brand, 10%),
+	"brand-light": lighten($color-brand, 10%),
+	
+	"accent": $color-accent,
+	"accent-dark": darken($color-accent, 10%),
+	"accent-light": lighten($color-accent, 10%),
+	
+	"text": #333333,
+	"text-secondary": #637b8c,
+	"link": $color-accent,
+	
+	"error": #e04562,
+	"success": #63e33e,
+	
+	"caption": #999999,
+	"border": #e0e0e0,
+);
+
+@function HexToRGB($hex) {
+	@return red($hex), green($hex), blue($hex);
+}
+
+@function cl($name, $opacity: false) {
+	@if $opacity {
+		@return rgba(var(--color-#{unquote($name)}--rgb), $opacity);
+	} @else {
+		@return var(--color-#{unquote($name)});
+	}
+}

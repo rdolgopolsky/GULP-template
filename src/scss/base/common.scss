@@ -1,0 +1,29 @@
+//------------------- box-sizing for all element
+* {
+	box-sizing: inherit;
+	max-height: 1000000px;
+	
+	&:after,
+	&:before {
+		box-sizing: inherit;
+	}
+}
+
+//------------------- container
+.container {
+	width: 100%;
+	margin: 0 auto;
+	padding-left: var(--gutter);
+	padding-right: var(--gutter);
+	background-color: var(--color-black);
+	
+	@each $name, $value in $container {
+		@if ($name == 'default') {
+			max-width: calc(#{$value} + var(--gutter) * 2);
+		} @else {
+			&._#{$name} {
+				max-width: calc(#{$value} + var(--gutter) * 2);
+			}
+		}
+	}
+}
